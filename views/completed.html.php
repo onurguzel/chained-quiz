@@ -69,7 +69,7 @@
 			<?php foreach($records as $record):
 				$class = ('alternate' == @$class) ? '' : 'alternate';?>
 				<tr class="<?php echo $class?>">				
-				<td><?php echo $record->id?></td>
+				<td><?php echo $record->id * 16?></td>
 				<td><?php echo empty($record->user_id) ? $record->ip : $record->user_nicename;
 				if(!empty($record->email)) echo '<br>'.$record->email;?></td>
 				<td><?php echo date_i18n($dateformat.' '.$timeformat, strtotime($record->datetime));
