@@ -183,7 +183,12 @@ class ChainedQuizQuiz {
 		 do_action('chained_quiz_completed', $taking_id);
 		 
 		 // if the result needs to redirect, replace the output with the redirect URL
-		 if(!empty($result->redirect_url)) $output = "[CHAINED_REDIRECT]".$result->redirect_url;
+		 if(!empty($result->redirect_url)) {
+			 $url = $result->redirect_url;
+			 $result_id = $completion_id * 16;
+			 $url = str_replace("@result-id", $result_id, $url);
+			 $output = "[CHAINED_REDIRECT]".$url;
+		 }
 		 
 		 return $output;
    } // end finalize
